@@ -59,6 +59,15 @@ app.get('/total-return-percentage', (req, res) => {
   res.send(`${totalReturnPercentage}`);
 });
 
+/**
+ * <http://localhost:3000/status?returnPercentage=90>
+ */
+app.get('/status', (req, res) => {
+  const returnPercentage = parseFloat(req.query.returnPercentage);
+  const status = returnPercentage > 0 ? 'Profit' : 'Loss';
+  res.send(`${status}`);
+});
+
 app.get('/', (req, res) => {
   res.send('Welcome to the Stock portfolio analysis API!');
 });
